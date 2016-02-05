@@ -17,7 +17,7 @@ class CreateTableUsuarios extends Migration
             $table->text('snombre');
             $table->text('sapellido');
             $table->string('scontrasena',60);
-            $table->string('scorreo', 70);
+            $table->string('scorreo', 70)->unique();
             $table->boolean('bactivo')->default(1);
             $table->boolean('badministra')->default(0);
             $table->timestamps();

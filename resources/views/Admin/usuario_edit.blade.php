@@ -9,6 +9,9 @@
        <div class="row row-content">
            <div class="col-md-10 col-md-offset-1">
                 <div class="panel panel-default">
+
+                    @include('errors.errores')
+                    
                     <div class="panel-heading">Datos Usuario</div>
                         <div class="panel-body">
                         <p>Actualizando ---> {{ $usuario->fullname }}</p>

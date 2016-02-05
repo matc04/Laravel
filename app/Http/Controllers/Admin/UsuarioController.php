@@ -9,6 +9,9 @@ use Illuminate\Http\Request;
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Validator;
+use App\Http\Requests\CrearUsuarioRequest;
+use App\Http\Requests\EditarUsuarioRequest;
+
 
 class UsuarioController extends Controller
 {
@@ -24,15 +27,7 @@ class UsuarioController extends Controller
         return view('Admin.usuario_create');
     }
 
-    public function store(Request $request){
-
-        $rules = array('snombre'     => 'required', 
-                       'sapellido'   => 'required', 
-                       'scontrasena' => 'required', 
-                       'scorreo'     => 'required'
-        );
-
-        $this->validate($request, $rules);
+    public function store(CrearUsuarioRequest $request){
 
         $usuario = Usuario::create($request->all());
         return redirect()->route('admin.usuario.index');
@@ -47,10 +42,10 @@ class UsuarioController extends Controller
         
     }
 
-    public function update( $id ){
+    public function update(EditarUsuarioRequest $request, $id ){
         $usuario = Usuario::findOrFail($id);
  
-        $usuario->fill($this->request->all());
+        $usuario->fill($request->all());
         $usuario->save();
 
         return redirect()->route('admin.usuario.index');
