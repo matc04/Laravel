@@ -1,4 +1,4 @@
-@extends('curso.base')
+@extends('base')
 
 @section('title')
     Prueba con Manuel

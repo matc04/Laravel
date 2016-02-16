@@ -9,6 +9,13 @@
        <div class="row row-content">
            <div class="col-md-10 col-md-offset-1">
                 <div class="panel panel-default">
+               
+                    @if (Session::has('message'))
+                        <div class="alert alert-success">
+                            <p>{{ Session::get('message') }}</p>
+                        </div>
+                    @endif
+
                     <div class="panel-heading">Usuarios</div>
                         <div class="panel-body">
                             <p>

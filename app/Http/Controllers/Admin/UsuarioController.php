@@ -11,6 +11,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Validator;
 use App\Http\Requests\CrearUsuarioRequest;
 use App\Http\Requests\EditarUsuarioRequest;
+use Illuminate\Support\Facades\Session;
 
 
 class UsuarioController extends Controller
@@ -47,6 +48,15 @@ class UsuarioController extends Controller
  
         $usuario->fill($request->all());
         $usuario->save();
+
+        return redirect()->route('admin.usuario.index');
+        
+    }
+
+    public function destroy( $id ){
+        Usuario::destroy($id);
+
+        Session::flash('message', trans('default.sucess_delete'));
 
         return redirect()->route('admin.usuario.index');
         

@@ -10,7 +10,13 @@
            <div class="col-md-10 col-md-offset-1">
                 <div class="panel panel-default">
 
+                    @if (Session::has('message'))
+                        <p class="alert alert-sucess">{{ Session::get('message') }}</p>
+                    @endif
+
                     @include('errors.errores')
+
+
                     
                     <div class="panel-heading">Datos Usuario</div>
                         <div class="panel-body">
@@ -21,10 +27,14 @@
                             
                             
                             <button type="submit" class="btn btn-default">Actualizar Usuario</button>
+
                         {!! Form::close() !!}
                            
                         </div>
                     </div>
+
+                    @include('Admin.partials.delete_usuario')
+
                 </div>
            </div>
        </div>
